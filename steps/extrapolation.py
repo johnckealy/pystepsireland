@@ -11,7 +11,7 @@ from utils import get_latlon_grid
 
 
 
-def extrapolate(datestr, n_leadtimes=12, num_prev_files=3, provider="opera"):
+def extrapolate(datestr, n_leadtimes=12, num_prev_files=3, provider="meteireann"):
     date = datetime.strptime(datestr, "%Y%m%d%H%M")
     data_source = rcparams.data_sources[provider]
 
@@ -25,6 +25,7 @@ def extrapolate(datestr, n_leadtimes=12, num_prev_files=3, provider="opera"):
         importer_kwargs['qty'] = "DBZH"
     timestep = data_source["timestep"]
     
+    breakpoint()
     # Find the input files from the archive
     fns = io.archive.find_by_date(
         date, root_path, path_fmt, fn_pattern, fn_ext, timestep, num_prev_files=num_prev_files
@@ -84,9 +85,8 @@ def original_field(datestr, provider="opera"):
 
 
 if __name__=="__main__":
-    original_field, extrapolated_fields, metadata = extrapolate("201808241945", n_leadtimes=12, provider="opera")
-    # original_field, extrapolated_fields, metadata = extrapolate("202006240615", n_leadtimes=12, provider="meteireann")
-    # original_field, metadata = extrapolate("202006240615",provider="meteireann")
+    # original_field, extrapolated_fields, metadata = extrapolate("201808241945", n_leadtimes=12, provider="opera")
+    original_field, extrapolated_fields, metadata = extrapolate("202006240615", n_leadtimes=12, provider="meteireann")
     plot_precip_field(original_field, geodata=metadata, map='cartopy')
     plt.figure()
     # plot_precip_field(extrapolated_fields[-1], geodata=metadata, map='cartopy')

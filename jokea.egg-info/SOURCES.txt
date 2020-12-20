@@ -1,6 +1,0 @@
-README.md
-setup.py
-jokea.egg-info/PKG-INFO
-jokea.egg-info/SOURCES.txt
-jokea.egg-info/dependency_links.txt
-jokea.egg-info/top_level.txt

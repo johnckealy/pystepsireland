@@ -68,11 +68,11 @@ def create_originals_gif(dates, latpoint, lonpoint ):
 
 if __name__=="__main__":
     latpoint, lonpoint = 54.304075, -8.541018
-    filenames = [os.path.basename(file) for file in glob('/home/jokea/steps-rainfall/radar/meteireann/20200626/*.hdf')]
+    filenames = [os.path.basename(file) for file in glob('/home/jokea/code/pystepsireland/radar/meteireann/20200705/*.hdf')]
     filenames.sort()
     datetimes = [ re.search('\d{14}', filename).group()[:-2] for filename in filenames ]
     datetimes = datetimes[:]
     # breakpoint()
     
     # create_originals_gif(datetimes, latpoint, lonpoint )
-    create_extrapolants_gif('202006260400', latpoint, lonpoint, n_leadtimes=15, num_prev_files=len(datetimes)-1)
+    create_extrapolants_gif('202007051610', latpoint, lonpoint, n_leadtimes=15, num_prev_files=len(datetimes)-1)
